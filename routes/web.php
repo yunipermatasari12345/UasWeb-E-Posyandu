@@ -8,7 +8,8 @@ use App\Http\Controllers\Admin\{
     YuniPosyanduController,
     YuniBalitaController,
     YuniJadwalController,
-    YuniPemeriksaanController
+    YuniPemeriksaanController,
+    YuniBeritaController
 };
 use App\Http\Middleware\EnsureAdmin;
 
@@ -43,6 +44,7 @@ Route::prefix('admin')
           Route::resource('balita',   YuniBalitaController::class);
           Route::resource('jadwal',   YuniJadwalController::class);
           Route::resource('pemeriksaan', YuniPemeriksaanController::class);
+          Route::resource('berita',   YuniBeritaController::class);
 });
 
 // Resource dummy untuk menu baru di admin
