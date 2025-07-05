@@ -39,4 +39,39 @@ class LandingController extends Controller
         $beritas = Berita::latest()->paginate(5);
         return view('landing.berita', compact('beritas'));
     }
+
+    public function formDaftarAnak()
+    {
+        return view('landing.daftar-anak');
+    }
+
+    public function daftarAnak(Request $request)
+    {
+        $request->validate([
+            'nama_balita' => 'required',
+            'tanggal_lahir' => 'required|date',
+            'nama_ortu' => 'required',
+            'alamat' => 'nullable',
+            'posyandu_id' => 'required|exists:yuni_posyandus,id',
+        ]);
+        YuniBalita::create($request->all());
+        return redirect()->route('daftar.anak')->with('success', 'Pendaftaran anak berhasil!');
+    }
+
+    public function formCekAnak()
+    {
+        return view('landing.cek-anak');
+    }
+
+    public function cekAnak(Request $request)
+    {
+        $request->validate([
+            'nama_balita' => 'required',
+            'tanggal_lahir' => 'required|date',
+        ]);
+        $anak = YuniBalita::where('nama_balita', $request->nama_balita)
+            ->where('tanggal_lahir', $request->tanggal_lahir)
+            ->first();
+        return view('landing.cek-anak', compact('anak'));
+    }
 }

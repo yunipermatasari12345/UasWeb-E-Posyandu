@@ -35,6 +35,8 @@
                 </div>
 
                 <nav class="hidden md:flex space-x-8">
+                    <a href="{{ route('daftar.anak') }}" class="text-gray-700 hover:text-blue-600 font-medium">Pendaftaran Anak</a>
+                    <a href="{{ route('cek.anak') }}" class="text-gray-700 hover:text-blue-600 font-medium">Cek Data Anak</a>
                     <a href="{{ route('berita') }}" class="text-gray-700 hover:text-blue-600 font-medium">Berita Kesehatan</a>
                     <a href="{{ route('dokumentasi') }}" class="text-gray-700 hover:text-blue-600 font-medium">Dokumentasi</a>
                     <a href="{{ route('kontak') }}" class="text-gray-700 hover:text-blue-600 font-medium">Hubungi Kami</a>

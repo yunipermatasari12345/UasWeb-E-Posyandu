@@ -18,6 +18,10 @@ Route::get('/jadwal', [LandingController::class, 'jadwal'])->name('jadwal');
 Route::get('/berita', [LandingController::class, 'showBerita'])->name('berita');
 Route::view('/dokumentasi', 'landing.dokumentasi')->name('dokumentasi');
 Route::view('/kontak', 'landing.kontak')->name('kontak');
+Route::get('/daftar-anak', [LandingController::class, 'formDaftarAnak'])->name('daftar.anak');
+Route::post('/daftar-anak', [LandingController::class, 'daftarAnak']);
+Route::get('/cek-anak', [LandingController::class, 'formCekAnak'])->name('cek.anak');
+Route::post('/cek-anak', [LandingController::class, 'cekAnak']);
 
 /* ---------- LOGIN / LOGOUT ---------- */
 Route::middleware('guest')->group(function () {
