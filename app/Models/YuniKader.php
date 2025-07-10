@@ -15,8 +15,21 @@ class YuniKader extends Model
 
     protected $fillable = [
         'nama_kader',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'alamat',
         'no_hp',
+        'email',
+        'pendidikan',
+        'pekerjaan',
         'posyandu_id',
+        'tanggal_bergabung',
+    ];
+
+    protected $casts = [
+        'tanggal_lahir' => 'date',
+        'tanggal_bergabung' => 'date',
     ];
 
     public function posyandu(): BelongsTo

@@ -194,8 +194,8 @@
                                 <option value="{{ $posyandu->id }}" {{ old('posyandu_id') == $posyandu->id ? 'selected' : '' }}>
                                     {{ $posyandu->nama_posyandu }} - {{ $posyandu->kelurahan }}
                                 </option>
-                            @endforeach
-                        </select>
+                @endforeach
+            </select>
                         @error('posyandu_id')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -228,8 +228,8 @@
                     <i class="fas fa-save mr-2"></i>
                     Simpan Data
                 </button>
-            </div>
-        </form>
+        </div>
+    </form>
     </div>
 </div>
 

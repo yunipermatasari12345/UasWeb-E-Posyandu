@@ -45,7 +45,7 @@
     </main>
     <footer>
         <div class="container">
-            <div class="mb-2">&copy; {{ date('Y') }} e-Posyandu. All rights reserved.</div>
+            <div class="mb-2">&copy; {{ date('Y') }} e-Posyandu. Yuni Permata Sari.</div>
             <div>
                 <a href="mailto:info@posyandu.com">info@posyandu.com</a> |
                 <a href="tel:081234567890">0812-3456-7890</a>

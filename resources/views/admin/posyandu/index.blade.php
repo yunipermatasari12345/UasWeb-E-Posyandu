@@ -147,8 +147,8 @@
                         <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Aksi
                         </th>
-                    </tr>
-                </thead>
+            </tr>
+        </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @forelse($posyandus as $posyandu)
                     <tr class="hover:bg-gray-50 transition-colors">
@@ -229,11 +229,11 @@
                                     Tambah Posyandu Pertama
                                 </a>
                             </div>
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                     @endforelse
-                </tbody>
-            </table>
+        </tbody>
+    </table>
         </div>
 
         <!-- Pagination -->

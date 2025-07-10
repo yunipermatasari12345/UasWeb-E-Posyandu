@@ -8,10 +8,12 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $posyandus = \App\Models\YuniPosyandu::latest()->take(5)->get();
-        $kaders    = \App\Models\YuniKader::latest()->take(5)->get();
-        $balitas   = \App\Models\YuniBalita::latest()->take(5)->get();
-        $jadwals   = \App\Models\YuniJadwal::with('posyandu')->latest()->take(5)->get();
-        return view('admin.dashboard', compact('posyandus', 'kaders', 'balitas', 'jadwals'));
+        $posyandus = \App\Models\YuniPosyandu::all();
+        $kaders    = \App\Models\YuniKader::all();
+        $balitas   = \App\Models\YuniBalita::all();
+        $jadwals   = \App\Models\YuniJadwal::all();
+        $beritas   = \App\Models\YuniBerita::all();
+        $pemeriksaans = \App\Models\YuniPemeriksaan::all();
+        return view('admin.dashboard', compact('posyandus', 'kaders', 'balitas', 'jadwals', 'beritas', 'pemeriksaans'));
     }
 }

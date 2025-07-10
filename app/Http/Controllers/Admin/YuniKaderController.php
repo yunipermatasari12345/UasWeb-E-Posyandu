@@ -12,51 +12,72 @@ class YuniKaderController extends Controller
 {
     public function index()
     {
-        $data = YuniKader::with('posyandu')->latest()->paginate(10);
-        return view('admin.kader.index', compact('data'));
+        $kaders = YuniKader::with('posyandu')->latest()->paginate(10);
+        $posyandus = YuniPosyandu::all();
+
+        return view('admin.kader.index', compact('kaders', 'posyandus'));
     }
 
     public function create()
     {
-        $posyandus = YuniPosyandu::orderBy('nama_posyandu')->get();
+        $posyandus = YuniPosyandu::all();
         return view('admin.kader.create', compact('posyandus'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kader'  => 'required|string|max:255',
-            'no_hp'       => 'nullable|string|max:20',
-            'posyandu_id' => 'required|exists:yuni_posyandus,id',
+            'nama_kader'       => 'required|string|max:255',
+            'jenis_kelamin'    => 'required|in:L,P',
+            'tempat_lahir'     => 'required|string|max:255',
+            'tanggal_lahir'    => 'required|date',
+            'alamat'           => 'required|string',
+            'no_hp'            => 'required|string|max:20',
+            'email'            => 'nullable|email|max:255',
+            'pendidikan'       => 'required|string|max:100',
+            'pekerjaan'        => 'required|string|max:255',
+            'posyandu_id'      => 'required|exists:yuni_posyandus,id',
+            'tanggal_bergabung' => 'required|date',
         ]);
 
         YuniKader::create($request->all());
-        return redirect()->route('admin.kader.index')
-                         ->with('success', 'Kader ditambahkan');
+        return redirect()->route('admin.kader.index')->with('success', 'Data kader berhasil ditambahkan!');
+    }
+
+    public function show(YuniKader $kader)
+    {
+        return view('admin.kader.show', compact('kader'));
     }
 
     public function edit(YuniKader $kader)
     {
-        $posyandus = YuniPosyandu::orderBy('nama_posyandu')->get();
+        $posyandus = YuniPosyandu::all();
         return view('admin.kader.edit', compact('kader', 'posyandus'));
     }
 
     public function update(Request $request, YuniKader $kader)
     {
         $request->validate([
-            'nama_kader'  => 'required|string|max:255',
-            'no_hp'       => 'nullable|string|max:20',
-            'posyandu_id' => 'required|exists:yuni_posyandus,id',
+            'nama_kader'       => 'required|string|max:255',
+            'jenis_kelamin'    => 'required|in:L,P',
+            'tempat_lahir'     => 'required|string|max:255',
+            'tanggal_lahir'    => 'required|date',
+            'alamat'           => 'required|string',
+            'no_hp'            => 'required|string|max:20',
+            'email'            => 'nullable|email|max:255',
+            'pendidikan'       => 'required|string|max:100',
+            'pekerjaan'        => 'required|string|max:255',
+            'posyandu_id'      => 'required|exists:yuni_posyandus,id',
+            'tanggal_bergabung' => 'required|date',
         ]);
 
         $kader->update($request->all());
-        return redirect()->route('admin.kader.index')
-                         ->with('success', 'Kader diperbarui');
+        return redirect()->route('admin.kader.index')->with('success', 'Data kader berhasil diperbarui!');
     }
 
     public function destroy(YuniKader $kader)
     {
         $kader->delete();
-        return back()->with('success', 'Kader dihapus');
+        return redirect()->route('admin.kader.index')->with('success', 'Data kader berhasil dihapus!');
     }
 }

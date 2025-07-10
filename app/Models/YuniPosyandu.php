@@ -16,6 +16,12 @@ class YuniPosyandu extends Model
         'nama_posyandu',
         'alamat',
         'kelurahan',
+        'kecamatan',
+        'no_hp',
+        'email',
+        'nama_ketua',
+        'no_hp_ketua',
+        'deskripsi',
     ];
 
     public function jadwals(): HasMany
@@ -26,5 +32,10 @@ class YuniPosyandu extends Model
     public function kaders(): HasMany
     {
         return $this->hasMany(YuniKader::class, 'posyandu_id');
+    }
+
+    public function balitas(): HasMany
+    {
+        return $this->hasMany(YuniBalita::class, 'posyandu_id');
     }
 }

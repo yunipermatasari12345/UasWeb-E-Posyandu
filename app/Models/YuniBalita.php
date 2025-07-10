@@ -13,10 +13,30 @@ class YuniBalita extends Model
 
     protected $fillable = [
         'nama_balita',
+        'jenis_kelamin',
+        'tempat_lahir',
         'tanggal_lahir',
+        'berat_lahir',
+        'panjang_lahir',
+        'umur',
         'nama_ortu',
+        'no_hp_ortu',
         'alamat',
+        'posyandu_id',
+        'catatan',
     ];
+
+    protected $casts = [
+        'tanggal_lahir' => 'date',
+        'berat_lahir' => 'decimal:2',
+        'panjang_lahir' => 'decimal:2',
+        'umur' => 'integer',
+    ];
+
+    public function posyandu()
+    {
+        return $this->belongsTo(YuniPosyandu::class, 'posyandu_id');
+    }
 
     public function pemeriksaans()
     {

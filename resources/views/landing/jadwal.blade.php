@@ -109,7 +109,7 @@
                                             <i class="fas fa-map-marker-alt text-red-500 mr-3"></i>
                                             <span>{{ $jadwal->lokasi }}</span>
                                         </div>
-                                    @endif
+    @endif
 
                                     @if($jadwal->deskripsi)
                                         <div class="mt-4 p-3 bg-gray-50 rounded-lg">
@@ -289,6 +289,6 @@
                 <span class="text-xs mt-1">Login</span>
             </a>
         </div>
-    </div>
+</div>
 </body>
 </html>

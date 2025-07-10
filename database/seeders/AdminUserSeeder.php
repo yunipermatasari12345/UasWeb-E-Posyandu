@@ -3,37 +3,47 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\YuniBalita;
-use App\Models\YuniKader;
-use App\Models\YuniPemeriksaan;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AdminUserSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
-        // Buat user admin
-        $admin = User::create([
+        // Admin
+        User::updateOrCreate([
+            'email' => 'admin@posyandu.test',
+        ], [
             'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('password'), // password: password
+            'password' => Hash::make('password'),
             'role' => 'admin',
         ]);
 
-        // Buat contoh data pemeriksaan jika ada balita dan kader
-        $balita = YuniBalita::first();
-        $kader = YuniKader::first();
-        if ($balita && $kader) {
-            YuniPemeriksaan::create([
-                'balita_id' => $balita->id,
-                'kader_id' => $kader->id,
-                'user_id' => $admin->id,
-                'tanggal' => now()->toDateString(),
-                'berat_badan' => 8.5,
-                'tinggi_badan' => 70.2,
-                'catatan' => 'Pemeriksaan awal oleh admin',
-            ]);
-        }
+        // Kader
+        User::updateOrCreate([
+            'email' => 'kader@posyandu.test',
+        ], [
+            'name' => 'Kader',
+            'password' => Hash::make('password'),
+            'role' => 'kader',
+        ]);
+
+        // Ortu
+        User::updateOrCreate([
+            'email' => 'ortu@posyandu.test',
+        ], [
+            'name' => 'Orang Tua',
+            'password' => Hash::make('password'),
+            'role' => 'ortu',
+        ]);
+
+        // Superadmin
+        User::updateOrCreate([
+            'email' => 'superadmin@posyandu.test',
+        ], [
+            'name' => 'Super Admin',
+            'password' => Hash::make('password'),
+            'role' => 'superadmin',
+        ]);
     }
 }

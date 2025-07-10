@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\YuniPemeriksaan::class, 'user_id');
     }
+
+    public function isAdmin() { return $this->role === 'admin'; }
+    public function isKader() { return $this->role === 'kader'; }
+    public function isOrtu() { return $this->role === 'ortu'; }
+    public function isSuperadmin() { return $this->role === 'superadmin'; }
 }

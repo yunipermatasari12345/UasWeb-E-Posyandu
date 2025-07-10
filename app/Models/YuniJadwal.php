@@ -13,10 +13,20 @@ class YuniJadwal extends Model
     protected $table = 'yuni_jadwals';
 
     protected $fillable = [
+        'posyandu_id',
+        'kegiatan',
+        'jenis_kegiatan',
         'tanggal',
         'jam',
-        'kegiatan',
-        'posyandu_id',
+        'deskripsi',
+        'target_peserta',
+        'penanggung_jawab',
+        'status',
+        'catatan',
+    ];
+
+    protected $casts = [
+        'tanggal' => 'date',
     ];
 
     public function posyandu(): BelongsTo
