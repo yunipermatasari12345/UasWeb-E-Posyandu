@@ -9,7 +9,10 @@ use App\Http\Controllers\Admin\{
     YuniBalitaController,
     YuniJadwalController,
     YuniPemeriksaanController,
-    YuniBeritaController
+    YuniBeritaController,
+    YuniAnakController,
+    YuniIbuController,
+    YuniLansiaController
 };
 
 // RUTE PUBLIK (tanpa login)
@@ -22,6 +25,7 @@ Route::get('/daftar-anak', [LandingController::class, 'formDaftarAnak'])->name('
 Route::post('/daftar-anak', [LandingController::class, 'daftarAnak']);
 Route::get('/cek-anak', [LandingController::class, 'formCekAnak'])->name('cek.anak');
 Route::post('/cek-anak', [LandingController::class, 'cekAnak']);
+Route::get('/statistik', [\App\Http\Controllers\StatistikController::class, 'index'])->name('statistik');
 
 // LOGIN / LOGOUT
 Route::middleware('guest')->group(function () {
@@ -44,4 +48,7 @@ Route::prefix('admin')
           Route::resource('jadwal',   YuniJadwalController::class);
           Route::resource('pemeriksaan', YuniPemeriksaanController::class);
           Route::resource('berita',   YuniBeritaController::class);
+          Route::resource('anak', \App\Http\Controllers\Admin\YuniAnakController::class);
+          Route::resource('ibu', \App\Http\Controllers\Admin\YuniIbuController::class);
+          Route::resource('lansia', \App\Http\Controllers\Admin\YuniLansiaController::class);
       });
