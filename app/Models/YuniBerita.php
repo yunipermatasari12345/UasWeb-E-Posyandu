@@ -29,9 +29,10 @@ class YuniBerita extends Model
         'updated_at' => 'datetime',
     ];
 
+    // Pakai id untuk route model binding
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'id';
     }
 
     public function scopePublished($query)

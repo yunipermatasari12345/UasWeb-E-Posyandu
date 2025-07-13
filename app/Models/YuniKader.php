@@ -24,6 +24,7 @@ class YuniKader extends Model
         'pendidikan',
         'pekerjaan',
         'posyandu_id',
+        'user_id',
         'tanggal_bergabung',
     ];
 
@@ -35,6 +36,11 @@ class YuniKader extends Model
     public function posyandu(): BelongsTo
     {
         return $this->belongsTo(YuniPosyandu::class, 'posyandu_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function pemeriksaans(): HasMany

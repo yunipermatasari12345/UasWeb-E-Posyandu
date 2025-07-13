@@ -44,10 +44,10 @@ Route::prefix('admin')
           Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
           Route::resource('kader',    YuniKaderController::class);
           Route::resource('posyandu', YuniPosyanduController::class);
-          Route::resource('balita',   YuniBalitaController::class);
+          Route::resource('balita',   YuniBalitaController::class)->parameters(['balita' => 'balita']);
           Route::resource('jadwal',   YuniJadwalController::class);
           Route::resource('pemeriksaan', YuniPemeriksaanController::class);
-          Route::resource('berita',   YuniBeritaController::class);
+          Route::resource('berita',   YuniBeritaController::class)->parameters(['berita' => 'berita']);
           Route::resource('anak', \App\Http\Controllers\Admin\YuniAnakController::class);
           Route::resource('ibu', \App\Http\Controllers\Admin\YuniIbuController::class);
           Route::resource('lansia', \App\Http\Controllers\Admin\YuniLansiaController::class);
