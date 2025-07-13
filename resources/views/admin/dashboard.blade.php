@@ -7,7 +7,7 @@
 <div class="max-w-5xl mx-auto py-8">
     <div class="mb-10">
         <h2 class="text-2xl font-bold mb-2">Statistik Tahun {{ date('Y') }}</h2>
-        <div class="text-blue-600 font-semibold mb-6">Data Posyandu Sejahtera</div>
+        <div class="text-blue-600 font-semibold mb-6">Data Yuni Permata Sari MI2C</div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mb-8">
             <!-- Data Bayi -->
             <div class="bg-white rounded-2xl shadow p-8 flex flex-col items-center transition hover:shadow-lg cursor-pointer statistik-card" data-target="#data-bayi" style="text-decoration:none;">
@@ -165,7 +165,7 @@
         </a>
     </div>
     <div class="mt-10 text-center text-gray-400 text-xs">
-        &copy; {{ date('Y') }} Posyandu App - Admin Dashboard
+        &copy; {{ date('Y') }} Yuni Permata Sari MI2C - Admin Dashboard
     </div>
 </div>
 @endsection

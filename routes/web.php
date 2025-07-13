@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\{
     YuniKaderController,
     YuniPosyanduController,
@@ -12,7 +13,9 @@ use App\Http\Controllers\Admin\{
     YuniBeritaController,
     YuniAnakController,
     YuniIbuController,
-    YuniLansiaController
+    YuniLansiaController,
+    PendaftaranController,
+    PengaduanController
 };
 
 // RUTE PUBLIK (tanpa login)
@@ -36,6 +39,23 @@ Route::post('/logout', [AuthController::class, 'logout'])
       ->middleware('auth')
       ->name('logout');
 
+// RUTE USER (untuk warga/ibu)
+Route::prefix('user')
+      ->middleware(['auth'])
+      ->name('user.')
+      ->group(function () {
+          Route::get('/', [UserController::class, 'dashboard'])->name('dashboard');
+          Route::get('/pendaftaran', [UserController::class, 'pendaftaran'])->name('pendaftaran');
+          Route::post('/pendaftaran', [UserController::class, 'storePendaftaran'])->name('store-pendaftaran');
+          Route::get('/status-pendaftaran', [UserController::class, 'statusPendaftaran'])->name('status-pendaftaran');
+          Route::get('/detail-pendaftaran/{id}', [UserController::class, 'detailPendaftaran'])->name('detail-pendaftaran');
+          Route::get('/pengaduan', [UserController::class, 'pengaduan'])->name('pengaduan');
+          Route::post('/pengaduan', [UserController::class, 'storePengaduan'])->name('store-pengaduan');
+          Route::get('/riwayat', [UserController::class, 'riwayat'])->name('riwayat');
+          Route::get('/jadwal', [UserController::class, 'jadwal'])->name('jadwal');
+          Route::get('/pengumuman', [UserController::class, 'pengumuman'])->name('pengumuman');
+      });
+
 // DASHBOARD + CRUD ADMIN (hanya untuk admin, pakai auth saja)
 Route::prefix('admin')
       ->middleware(['auth'])
@@ -51,4 +71,13 @@ Route::prefix('admin')
           Route::resource('anak', \App\Http\Controllers\Admin\YuniAnakController::class);
           Route::resource('ibu', \App\Http\Controllers\Admin\YuniIbuController::class);
           Route::resource('lansia', \App\Http\Controllers\Admin\YuniLansiaController::class);
+
+          // Route untuk validasi pendaftaran user
+          Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+          Route::get('/pendaftaran/{id}', [PendaftaranController::class, 'show'])->name('pendaftaran.show');
+          Route::patch('/pendaftaran/{id}/approve', [PendaftaranController::class, 'approve'])->name('pendaftaran.approve');
+          Route::patch('/pendaftaran/{id}/reject', [PendaftaranController::class, 'reject'])->name('pendaftaran.reject');
+
+          // Route untuk pengaduan user
+          Route::resource('pengaduan', PengaduanController::class);
       });

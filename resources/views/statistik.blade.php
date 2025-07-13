@@ -5,7 +5,7 @@
 @section('content')
 <div class="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-10">
     <h1 class="text-4xl font-bold text-gray-800 mb-2">Statistik Tahun {{ date('Y') }}</h1>
-    <div class="text-xl text-blue-600 font-semibold mb-8">Data Posyandu Sejahtera</div>
+    <div class="text-xl text-blue-600 font-semibold mb-8">Data Yuni Permata Sari MI2C</div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl mb-8">
         <!-- Data Bayi -->
         <div class="bg-white rounded-2xl shadow p-8 flex flex-col items-center transition hover:shadow-lg cursor-pointer statistik-card" data-target="#data-bayi" style="text-decoration:none;">

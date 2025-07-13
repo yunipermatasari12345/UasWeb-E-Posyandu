@@ -270,16 +270,50 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('daftar.anak') ? 'active' : '' }}" href="{{ route('daftar.anak') }}">
+                            <i class="fas fa-user-plus me-1"></i>Pendaftaran
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('cek.anak') ? 'active' : '' }}" href="{{ route('cek.anak') }}">
+                            <i class="fas fa-clipboard-check me-1"></i> Cek Status Pendaftaran
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('statistik') ? 'active' : '' }}" href="{{ route('statistik') }}">
                             <i class="fas fa-chart-bar me-1"></i>Statistik
                         </a>
                     </li>
+                    @auth
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary ms-2" href="{{ route('admin.dashboard') }}">
+                            <i class="fas fa-cog me-1"></i>Admin Panel
+                        </a>
+                    </li>
+                    @else
                     <li class="nav-item">
                         <a class="btn btn-primary ms-2" href="{{ route('login') }}">
                             <i class="fas fa-sign-in-alt me-1"></i>Login Admin
                         </a>
                     </li>
+                    @endauth
                 </ul>
+                <div class="d-flex align-items-center gap-3">
+                    @auth
+                        @php
+                            $pendaftaran = \App\Models\YuniPendaftaran::where('user_id', auth()->id())->latest()->first();
+                        @endphp
+                        @if($pendaftaran)
+                            @if($pendaftaran->status == 'disetujui')
+                                <span class="badge bg-success" style="font-size:0.95rem;"><i class="fas fa-check-circle me-1"></i> Pendaftaran Disetujui</span>
+                            @elseif($pendaftaran->status == 'pending')
+                                <span class="badge bg-warning text-dark" style="font-size:0.95rem;"><i class="fas fa-hourglass-half me-1"></i> Menunggu Validasi</span>
+                            @else
+                                <span class="badge bg-danger" style="font-size:0.95rem;"><i class="fas fa-times-circle me-1"></i> Pendaftaran Ditolak</span>
+                            @endif
+                        @endif
+                    @endauth
+                </div>
             </div>
         </div>
     </nav>
@@ -305,7 +339,7 @@
                     <div class="col-md-6 text-md-end text-center">
                         <div class="mb-2">
                             <a href="mailto:info@posyandu.com" class="me-3">
-                                <i class="fas fa-envelope me-1"></i>info@posyandu.com
+                                <i class="fas fa-envelope me-1"></i>info@yuniposyandu.com
                             </a>
                             <a href="tel:081234567890">
                                 <i class="fas fa-phone me-1"></i>0812-3456-7890

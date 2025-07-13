@@ -42,20 +42,41 @@ class LandingController extends Controller
 
     public function formDaftarAnak()
     {
-        return view('landing.daftar-anak');
+        $posyandus = \App\Models\YuniPosyandu::all();
+        return view('landing.daftar-anak', compact('posyandus'));
     }
 
     public function daftarAnak(Request $request)
     {
         $request->validate([
             'nama_balita' => 'required',
+            'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
+            'berat_lahir' => 'required|numeric|min:0',
+            'panjang_lahir' => 'required|numeric|min:0',
+            'no_hp_ortu' => 'required',
             'nama_ortu' => 'required',
             'alamat' => 'nullable',
             'posyandu_id' => 'required|exists:yuni_posyandus,id',
         ]);
-        YuniBalita::create($request->all());
-        return redirect()->route('daftar.anak')->with('success', 'Pendaftaran anak berhasil!');
+
+        \App\Models\YuniPendaftaran::create([
+            'user_id' => null, // Belum login
+            'nama_anak' => $request->nama_balita,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin ?? 'L',
+            'nama_ibu' => $request->nama_ortu,
+            'nik_ibu' => null,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp_ortu,
+            'jenis_pendaftaran' => 'balita',
+            'usia_kehamilan' => null,
+            'catatan' => null,
+            'status' => 'pending',
+            'admin_id' => null,
+            'tanggal_validasi' => null,
+        ]);
+        return redirect()->route('daftar.anak')->with('success', 'Pendaftaran anak berhasil! Menunggu validasi admin.');
     }
 
     public function formCekAnak()
@@ -69,9 +90,9 @@ class LandingController extends Controller
             'nama_balita' => 'required',
             'tanggal_lahir' => 'required|date',
         ]);
-        $anak = YuniBalita::where('nama_balita', $request->nama_balita)
+        $pendaftaran = \App\Models\YuniPendaftaran::where('nama_anak', $request->nama_balita)
             ->where('tanggal_lahir', $request->tanggal_lahir)
-            ->first();
-        return view('landing.cek-anak', compact('anak'));
+            ->latest()->first();
+        return view('landing.cek-anak', compact('pendaftaran'));
     }
 }

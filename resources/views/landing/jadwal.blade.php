@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Posyandu - Posyandu Sejahtera</title>
+    <title>Jadwal Posyandu - Yuni Permata Sari MI2C</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -26,23 +26,11 @@
                         <i class="fas fa-heartbeat text-white text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-gray-800">Posyandu Sejahtera</h1>
+                        <h1 class="text-xl font-bold text-gray-800">Yuni Permata Sari MI2C</h1>
                         <p class="text-sm text-gray-600">Sistem Informasi Posyandu</p>
                     </div>
                 </div>
-
-                <nav class="hidden md:flex space-x-8">
-                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
-                    <a href="#berita" class="text-gray-700 hover:text-blue-600 font-medium">Berita Kesehatan</a>
-                    <a href="#dokumentasi" class="text-gray-700 hover:text-blue-600 font-medium">Dokumentasi</a>
-                    <a href="#kontak" class="text-gray-700 hover:text-blue-600 font-medium">Hubungi Kami</a>
-                    <a href="{{ route('login') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Login</a>
-                </nav>
-
-                <!-- Mobile menu button -->
-                <button class="md:hidden text-gray-700">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+                <!-- Menu navigasi dihapus sesuai permintaan -->
             </div>
         </div>
     </header>
@@ -55,7 +43,7 @@
                     Jadwal Kegiatan Posyandu
                 </h1>
                 <p class="text-xl mb-8 opacity-90">
-                    Informasi lengkap tentang jadwal kegiatan dan layanan Posyandu Sejahtera
+                    Informasi lengkap tentang jadwal kegiatan dan layanan Yuni Permata Sari MI2C
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="{{ route('home') }}" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
@@ -225,7 +213,7 @@
                         <i class="fas fa-heartbeat text-white text-xl"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold">Posyandu Sejahtera</h3>
+                        <h3 class="text-xl font-bold">Yuni Permata Sari MI2C</h3>
                         <p class="text-gray-400 text-sm">Sistem Informasi Posyandu</p>
                     </div>
                 </div>
@@ -262,7 +250,7 @@
 
                 <div class="border-t border-gray-700 pt-8">
                     <p class="text-gray-400">
-                        Copyright © 2025 Posyandu Sejahtera. All Rights Reserved.
+                        Copyright © 2025 Yuni Permata Sari MI2C. All Rights Reserved.
                     </p>
                 </div>
             </div>

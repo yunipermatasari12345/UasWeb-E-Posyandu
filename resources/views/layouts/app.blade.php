@@ -87,6 +87,15 @@
                 </a>
 
                 <div class="px-4 mt-6 mb-4">
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Validasi User</p>
+                </div>
+
+                <a href="{{ route('admin.pendaftaran.index') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 sidebar-transition {{ request()->routeIs('admin.pendaftaran.*') ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600' : '' }}">
+                    <i class="fas fa-user-plus w-5 h-5 mr-3"></i>
+                    <span class="font-medium">Validasi Pendaftaran</span>
+                </a>
+
+                <div class="px-4 mt-6 mb-4">
                     <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Pengaturan</p>
                 </div>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hubungi Kami - Posyandu Sejahtera</title>
+    <title>Hubungi Kami - Yuni Permata Sari MI2C</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -14,7 +14,7 @@
                 <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
                     <i class="fas fa-heartbeat text-white text-xl"></i>
                 </div>
-                <h1 class="text-xl font-bold text-gray-800">Posyandu Sejahtera</h1>
+                <h1 class="text-xl font-bold text-gray-800">Yuni Permata Sari MI2C</h1>
             </div>
             <nav class="hidden md:flex space-x-8">
                 <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
