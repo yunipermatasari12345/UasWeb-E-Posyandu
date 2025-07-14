@@ -279,11 +279,7 @@
                             <i class="fas fa-clipboard-check me-1"></i> Cek Status Pendaftaran
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('statistik') ? 'active' : '' }}" href="{{ route('statistik') }}">
-                            <i class="fas fa-chart-bar me-1"></i>Statistik
-                        </a>
-                    </li>
+                    {{-- Statistik di navbar dihapus --}}
                     @auth
                     <li class="nav-item">
                         <a class="btn btn-outline-primary ms-2" href="{{ route('admin.dashboard') }}">

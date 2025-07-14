@@ -369,24 +369,6 @@
     </div>
 </section>
 
-<!-- Call to Action Section -->
-<section class="text-center py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px;">
-    <div class="container">
-        <h2 class="display-5 fw-bold text-white mb-4">Bergabunglah dengan Kami</h2>
-        <p class="lead text-white mb-4">
-            Mari bersama-sama meningkatkan kualitas kesehatan masyarakat Indonesia
-        </p>
-        <div class="d-flex flex-wrap justify-content-center gap-3">
-            <a href="{{ route('login') }}" class="btn btn-light btn-lg px-4">
-                <i class="fas fa-sign-in-alt me-2"></i>Login Admin
-            </a>
-            <a href="{{ route('statistik') }}" class="btn btn-outline-light btn-lg px-4">
-                <i class="fas fa-chart-line me-2"></i>Lihat Statistik
-            </a>
-        </div>
-    </div>
-</section>
-
 <style>
 .service-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
